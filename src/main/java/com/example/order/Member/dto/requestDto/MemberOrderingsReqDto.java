@@ -4,9 +4,10 @@ import com.example.order.Ordering.domain.Ordering;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Map;
 
 @Data
 public class MemberOrderingsReqDto {
     private Long id;
-    private List<Ordering> ordering;
+    private Map<String, Integer> itemNameStockMap;
 }

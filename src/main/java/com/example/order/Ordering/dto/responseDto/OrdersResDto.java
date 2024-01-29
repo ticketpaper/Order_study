@@ -7,8 +7,6 @@ import lombok.Data;
 @Data
 public class OrdersResDto {
     private Long id;
-    private Member member;
+    private Long memberId;
     private OrderStatus orderStatus;
-
-
 }

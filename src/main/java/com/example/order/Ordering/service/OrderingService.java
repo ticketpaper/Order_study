@@ -40,7 +40,7 @@ public class OrderingService {
         for (Ordering ordering : all) {
             OrdersResDto ordersResDto1 = new OrdersResDto();
             ordersResDto1.setId(ordering.getId());
-            ordersResDto1.setMember(ordering.getMember());
+            ordersResDto1.setMemberId(ordering.getMember().getId());
             ordersResDto1.setOrderStatus(ordering.getOrderStatus());
             ordersResDtos.add(ordersResDto1);
         }
