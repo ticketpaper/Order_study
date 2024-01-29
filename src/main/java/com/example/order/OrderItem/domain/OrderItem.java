@@ -1,6 +1,7 @@
 package com.example.order.OrderItem.domain;
 
 import com.example.order.Item.domain.Item;
+import com.example.order.Ordering.domain.OrderStatus;
 import com.example.order.Ordering.domain.Ordering;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,10 +31,12 @@ public class OrderItem {
     @JoinColumn(nullable = false)
     private Item item;
 
+    private int quantity;
     @CreationTimestamp
     @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    LocalDateTime createdTime;
+    private LocalDateTime createdTime;
     @UpdateTimestamp
     @Column(columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-    LocalDateTime updatedTime;
+    private LocalDateTime updatedTime;
+
 }

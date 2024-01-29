@@ -1,5 +1,6 @@
 package com.example.order.Ordering.domain;
 
+import com.example.order.Item.domain.Item;
 import com.example.order.Member.domain.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,4 +35,21 @@ public class Ordering {
     @UpdateTimestamp
     @Column(columnDefinition = "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     LocalDateTime updatedTime;
+
+    public void orderUpdate(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    public void stockManage(Ordering ordering, Item item, int quantity) {
+        int stockQuantity = item.getStockQuantity();
+        if (ordering.orderStatus.equals(OrderStatus.ORDERED)) {
+            if (stockQuantity - quantity < 0) {
+                throw new NullPointerException();
+            } else {
+                item.setStockQuantity(stockQuantity - quantity);
+            }
+        } else if (ordering.orderStatus.equals(OrderStatus.CANCELED)) {
+            item.setStockQuantity(stockQuantity + quantity);
+        }
+    }
 }
